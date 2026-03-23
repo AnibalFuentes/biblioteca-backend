@@ -8,10 +8,10 @@ export const LibroCreateSchema = z
   .object({
     titulo: z.string().trim().min(1, "El titulo es obligatorio"),
     autor: z.string().trim().min(1, "El autor es obligatorio"),
-    apublicaion: z.string().trim().optional().default(""),
-    editorial: z.string().trim().optional().default(""),
-    categoria: z.string().trim().optional().default(""),
-    sede: z.string().trim().optional().default(""),
+    apublicacion: z.string().trim().optional(),
+    editorial: z.string().trim().optional(),
+    categoria: z.string().trim().optional(),
+    sede: z.string().trim().optional(),
   })
   .strict();
 

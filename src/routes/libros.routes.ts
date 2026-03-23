@@ -6,11 +6,22 @@ import {
   listarLibros,
   obtenerLibro,
 } from "../controllers/libros.controller";
+import { validateBody, validateParams } from "../middlewares/validate";
+import {
+  LibroCreateSchema,
+  LibroIdParamsSchema,
+  LibroUpdateSchema,
+} from "../dto/libro.schema";
 
 export const librosRouter = Router();
 
-librosRouter.post("/", crearLibro);
+librosRouter.post("/", validateBody(LibroCreateSchema), crearLibro);
 librosRouter.get("/", listarLibros);
-librosRouter.get("/:id", obtenerLibro);
-librosRouter.put("/:id", actualizarLibro);
-librosRouter.delete("/:id", eliminarLibro);
+librosRouter.get("/:id", validateParams(LibroIdParamsSchema), obtenerLibro);
+librosRouter.put(
+  "/:id",
+  validateParams(LibroIdParamsSchema),
+  validateBody(LibroUpdateSchema),
+  actualizarLibro,
+);
+librosRouter.delete("/:id", validateParams(LibroIdParamsSchema), eliminarLibro);
