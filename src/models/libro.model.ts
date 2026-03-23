@@ -13,8 +13,9 @@ const libroSchema = new Schema(
     timestamps: true,
     versionKey: false,
     toJSON: {
-      transform: (doc, ret) => {
-        ret.id = ret._id?.toString?.();
+      transform: (doc, ret: any) => {
+        ret.id = ret._id?.toString();
+        delete ret._id;
         return ret;
       },
     },

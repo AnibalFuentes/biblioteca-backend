@@ -47,7 +47,7 @@ export async function obtenerLibro(req: Request, res: Response) {
 export async function actualizarLibro(req: Request, res: Response) {
   try {
     const libro = await Libro.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
+      returnDocument: "after",
       runValidators: true,
     });
 
