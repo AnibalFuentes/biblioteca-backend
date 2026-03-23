@@ -74,3 +74,17 @@ export async function actualizarLibro(req: Request, res: Response) {
     });
   }
 }
+
+export async function eliminarLibro(req: Request, res: Response) {
+  const libro = await Libro.findByIdAndDelete(req.params.id);
+  if (!libro)
+    return res.status(404).json({
+      success: false,
+      msg: "El libro no existe",
+    });
+
+  return res.status(200).json({
+    success: true,
+    msg: "Libro eliminado",
+  });
+}
