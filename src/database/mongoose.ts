@@ -13,7 +13,7 @@ export async function connectMongo() {
   await mongoose.connect(uri);
 
   isConnected = true;
-  console.log("conectadi a MongoDB");
+  console.log("conectado a MongoDB");
 
   mongoose.connection.on("error", (err) => {
     console.error(err);

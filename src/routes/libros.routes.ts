@@ -1,7 +1,16 @@
 import { Router } from "express";
-import { crearLibro, listarLibros } from "../controllers/libros.controller";
+import {
+  actualizarLibro,
+  crearLibro,
+  eliminarLibro,
+  listarLibros,
+  obtenerLibro,
+} from "../controllers/libros.controller";
 
 export const librosRouter = Router();
 
-librosRouter.get("/", listarLibros);
 librosRouter.post("/", crearLibro);
+librosRouter.get("/", listarLibros);
+librosRouter.get("/:id", obtenerLibro);
+librosRouter.put("/:id", actualizarLibro);
+librosRouter.delete("/:id", eliminarLibro);
